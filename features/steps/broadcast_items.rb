@@ -1,13 +1,15 @@
 #encoding: utf-8
 
-Given /^a user who is (not)? logged in [as a (\w) user]?/ do |logged_out, role|
-  pending # if not logged_out, log them in as a user
+Given /^a user who is (not )?logged in/ do |logged_out|
+  # if not logged_out, log them in as a user
 end
 
 When /^(?:she|he|xie|they) visit(?:s)? the ([\w|\/|_]+) page$/ do |page_url|
-  pending # send  a request as this user to the page_url
+  # visit 'http://' + Capybara.server_host + ':' + Rack::Server.new.options[:Port].to_s + page_url
+  # visit 'http://localhost:8000' + page_url
+  visit 'http://localhost:3000/broadcast/items'
 end
 
-Then /^(?:she|he|xie|they) should see a messge that says "(.*)"$/ do |msg|
-  pending # the page content should contain the text "msg"
+Then /^(?:she|he|xie|they) should see a message that says "(.*)"$/ do |msg|
+  page.should have_content msg
 end
